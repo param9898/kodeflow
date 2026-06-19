@@ -1,0 +1,12 @@
+/* Fallback styles used briefly before per-peer styles are injected, and for
+   any remote client whose awareness state doesn't carry a `user` field. */
+.yRemoteSelection {
+  background-color: rgba(78, 161, 243, 0.24);
+}
+
+.yRemoteSelectionHead {
+  position: absolute;
+  border-left: 2px solid #4ea1f3;
+  height: 100%;
+  box-sizing: border-box;
+}
