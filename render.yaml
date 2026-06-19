@@ -1,0 +1,25 @@
+# Render Blueprint for the KodeFlow Socket.IO server.
+#
+# Free plan = single web instance. The server already falls back to
+# single-instance mode if REDIS_URL is unreachable, so this works as
+# zero-config. Add a Redis (Render Key Value or Upstash) and set
+# REDIS_URL in the dashboard if you want multi-instance fan-out later.
+#
+# The client (Vite/React) is deployed separately on Vercel — see
+# DEPLOY.md.
+
+services:
+  - type: web
+    name: kodeflow-server
+    runtime: node
+    region: singapore        # closest to India
+    plan: free
+    rootDir: server
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
